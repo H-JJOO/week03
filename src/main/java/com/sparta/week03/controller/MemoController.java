@@ -7,6 +7,7 @@ import com.sparta.week03.service.MemoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor//Spring 이 생성자 만들어줌
@@ -25,7 +26,10 @@ public class MemoController {
     //조회
     @GetMapping("/api/memos")
     public List<Memo> getMemos() {
-        return memoRepository.findAllByOrderByModifiedAtDesc();//생성일자 내림차순(최신~)
+        LocalDateTime start = LocalDateTime.now().minusDays(1);
+        LocalDateTime end = LocalDateTime.now();
+
+        return memoRepository.findAllByModifiedAtBetweenOrderByModifiedAtDesc(start, end); //생성일자 내림차순(최신~)
     }
 
     //수정
