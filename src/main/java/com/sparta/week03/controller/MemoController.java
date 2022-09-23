@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@RequiredArgsConstructor//Spring 이 생성자 만들어줌
-@RestController//Spring 이 생성자 만들어줌
+@RequiredArgsConstructor//lombok, 반드시 사용해야하니까 넣어줘
+@RestController//JSON
 public class MemoController {
     private final MemoRepository memoRepository;//생성,조회,삭제 위해서
     private final MemoService memoService;//업데이트를 위해서
